@@ -17,6 +17,15 @@
 
 **运行前提：** 完整能力依赖系统平台签名与 `sharedUserId=android.uid.system`（系统 UID）。普通调试签名下可编译运行，但静默安装 / 未知来源等系统级能力会受限或不可用。
 
+## 截图
+
+| | |
+|--|--|
+| ![主界面](docs/screenshots/01-main.png) | ![设置](docs/screenshots/02-settings.png) |
+| ![应用管理](docs/screenshots/03-apps.png) | ![内存分析](docs/screenshots/04-mem.png) |
+
+更多见 [`docs/screenshots/`](docs/screenshots/)。
+
 ## 构建
 
 依赖：`libs/ecarx.adapterapi.jar`（`compileOnly`，见 [`libs/README.md`](libs/README.md)）。
