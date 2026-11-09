@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/text_primary"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/panel_single"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_target_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_target_pkg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/text_target_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp">
+
+            <Button
+                android:id="@+id/btn_allow"
+                style="@style/Widget.Uestcit.Button.Accent"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/btn_unknown_allow" />
+
+            <Button
+                android:id="@+id/btn_deny"
+                style="@style/Widget.Uestcit.Button.Ghost"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:text="@string/btn_unknown_deny" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_allow_finish"
+            style="@style/Widget.Uestcit.Button.Accent"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/btn_unknown_allow_finish" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="12dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_refresh_list"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/btn_unknown_refresh" />
+
+        <ListView
+            android:id="@+id/list_entries"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:textColor="@color/text_muted"
+        android:textIsSelectable="true"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/btn_close"
+        style="@style/Widget.Uestcit.Button.Ghost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/btn_unknown_close" />
+</LinearLayout>

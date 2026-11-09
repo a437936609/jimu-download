@@ -1,0 +1,67 @@
+plugins {
+    id "com.android.application"
+}
+
+def platformStore = file("${rootProject.projectDir}/signing/aosp-platform/platform.jks")
+
+android {
+    namespace "com.uestcit.download"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.uestcit.download"
+        // 对齐 753 车机 API 27/28
+        minSdk 27
+        targetSdk 28
+        // 1.1.0：应用管理权限/卸载、通知等特殊权限、内存分析
+        versionCode 11
+        versionName "1.1.0"
+    }
+
+    // AOSP test platform 密钥；AGP 只出 v2，assemble 后由 resign-platform.ps1 补干净 v1+v2
+    signingConfigs {
+        platform {
+            if (platformStore.exists()) {
+                storeFile platformStore
+                storePassword "android"
+                keyAlias "platform"
+                keyPassword "android"
+                enableV1Signing false
+                enableV2Signing true
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            if (platformStore.exists()) {
+                signingConfig signingConfigs.platform
+            }
+        }
+        debug {
+            minifyEnabled false
+            if (platformStore.exists()) {
+                signingConfig signingConfigs.platform
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.recyclerview:recyclerview:1.3.2"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "com.google.android.material:material:1.11.0"
+    // 仅 encode 二维码（车机无摄像头，不做扫码）
+    implementation "com.google.zxing:core:3.5.3"
+    // AdaptAPI：热点能力/客户端；开热点仍走 WifiManager 反射。
+    // 工程内 libs/：本模块可独立开源构建，不依赖兄弟仓 docs/jars 路径。
+    compileOnly files("${rootProject.projectDir}/libs/ecarx.adapterapi.jar")
+}

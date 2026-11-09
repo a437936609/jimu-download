@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FileProvider 可读路径：应用私有 downloads + 公共 Download。 -->
+<paths>
+    <external-files-path
+        name="app_downloads"
+        path="downloads/" />
+    <external-path
+        name="public_download"
+        path="Download/" />
+</paths>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/bg_elevated"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="88dp"
+            android:text="@string/back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/mem_stats_title"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_sort_mem"
+            style="@style/Widget.Uestcit.Button.Accent"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/mem_stats_sort_mem" />
+
+        <Button
+            android:id="@+id/btn_sort_cpu"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/mem_stats_sort_cpu" />
+
+        <Button
+            android:id="@+id/btn_refresh"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/refresh" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- 整机：总量 / 已用 / 可用 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingTop="12dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/text_mem_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_mem_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mem_stats_col_app"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/mem_stats_col_pss"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/mem_stats_col_cpu"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/mem_stats_col_proc"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <ListView
+        android:id="@+id/list_procs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/divider"
+        android:dividerHeight="1dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp" />
+</LinearLayout>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  sharedUserId=system：须用与车机固件一致的平台证书签名（753 上为 AOSP test platform）。
+  普通 debug 签名拿不到 UID 1000，无法静默装包 / 改其它包 AppOps。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 二维码传 APK：SoftAp 只开关 + 只读 WifiConfiguration 展示（对齐 ecarx.settings） -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.OVERRIDE_WIFI_CONFIG" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 静默安装主路径（平台签 + system UID 时生效） -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <!-- 本应用请求安装未知来源；未知来源页也按此权限过滤候选包 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!-- 应用管理（替代 Settings.apk：强停/停用/清数据/清缓存/体积/卸载/权限） -->
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+    <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
+    <uses-permission android:name="android.permission.DELETE_CACHE_FILES" />
+    <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.GRANT_RUNTIME_PERMISSIONS" />
+    <uses-permission android:name="android.permission.REVOKE_RUNTIME_PERMISSIONS" />
+    <!-- 通知监听名单 Settings.Secure.enabled_notification_listeners -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.STATUS_BAR_SERVICE" />
+    <!-- 设置页「重启车机」：PowerManager.reboot（需 system UID） -->
+    <uses-permission android:name="android.permission.REBOOT" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.UestcitDownload"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".UnknownSourcesActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".SettingsActivity" />
+
+        <!-- 设置 → 应用管理：本机已装包列表 -->
+        <activity
+            android:name=".AppListActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".SettingsActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- 设置 → 内存分析：整机可用 + 各应用 PSS/CPU -->
+        <activity
+            android:name=".ProcessMemStatsActivity"
+            android:exported="false"
+            android:label="@string/mem_stats_title"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".SettingsActivity" />
+
+        <!--
+          应用详情；exported 承接 APPLICATION_DETAILS_SETTINGS，
+          753 无 Settings.apk 时其它应用跳「应用信息」落到本页。
+        -->
+        <activity
+            android:name=".AppDetailActivity"
+            android:exported="true"
+            android:label="@string/app_detail_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".AppListActivity"
+            android:theme="@style/Theme.UestcitDownload">
+            <intent-filter>
+                <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          应用详情 → 权限管理；亦注册 MANAGE_APP_PERMISSIONS（无高优先级，
+          与系统并存时由用户选择打开哪个）。
+        -->
+        <activity
+            android:name=".AppPermissionsActivity"
+            android:exported="true"
+            android:label="@string/app_permissions_title"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".AppDetailActivity"
+            android:theme="@style/Theme.UestcitDownload">
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_APP_PERMISSIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_APP_PERMISSIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </activity>
+
+        <!-- 运行时权限申请备选页（与 PackageInstaller 并存时系统弹出选择器） -->
+        <activity
+            android:name=".GrantPermissionsActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:label="@string/grant_permissions_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.UestcitDownload">
+            <intent-filter>
+                <action android:name="android.content.pm.action.REQUEST_PERMISSIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          特殊权限备选页：悬浮窗 / 写设置 / 使用情况 / 通知监听 / 勿扰。
+          仅注册备选，不高优抢解析。
+        -->
+        <activity
+            android:name=".ManageAppOpActivity"
+            android:exported="true"
+            android:label="@string/title_manage_app_op"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.UestcitDownload">
+            <intent-filter>
+                <action android:name="android.settings.action.MANAGE_OVERLAY_PERMISSION" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.action.MANAGE_OVERLAY_PERMISSION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.action.MANAGE_WRITE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.action.MANAGE_WRITE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.USAGE_ACCESS_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.NOTIFICATION_POLICY_ACCESS_GRANTED_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设置 → 二维码传 APK：车机热点 + 本机 HTTP 出码，手机扫码上传 -->
+        <activity
+            android:name=".QrApkTransferActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".SettingsActivity" />
+
+        <!-- 设置 → U盘安装：单层目录浏览 + 静默装包（不删 U 盘源） -->
+        <activity
+            android:name=".UsbApkInstallActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".SettingsActivity" />
+
+        <!--
+          承接系统「安装未知应用」设置页：753 无 Settings.apk 时，其它应用
+          startActivity(MANAGE_UNKNOWN_APP_SOURCES) 会进本页，由本机写 AppOps。
+        -->
+        <activity
+            android:name=".ManageUnknownSourcesActivity"
+            android:exported="true"
+            android:label="@string/title_manage_unknown"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.UestcitDownload">
+            <intent-filter>
+                <action android:name="android.settings.MANAGE_UNKNOWN_APP_SOURCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.MANAGE_UNKNOWN_APP_SOURCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".InstallResultReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.uestcit.download.INSTALL_STATUS" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>

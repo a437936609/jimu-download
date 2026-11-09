@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 内存分析列表行：应用名 / 包名 / PSS / CPU / 进程数 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="56dp"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_proc_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_proc_pkg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:maxLines="1"
+            android:paddingTop="2dp"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_proc_pss"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="@color/text_primary"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/text_proc_cpu"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="@color/accent"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/text_proc_count"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+</LinearLayout>

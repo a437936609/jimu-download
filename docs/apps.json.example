@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "id": "example",
+      "name": "示例应用",
+      "packageName": "com.example.app",
+      "versionName": "2.1.0",
+      "versionCode": 21,
+      "apk": "example-2.1.0.apk",
+      "desc": "可选说明"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  积木下载器启动图标前景：托盘 + 积木块风格，中心向下箭头表示「下载」。
+  色系对齐积木桌面（底板深色、强调 #4FD1C5）。视口 108，图形落在自适应安全区。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 托盘底板 -->
+    <path
+        android:fillColor="#FF161C24"
+        android:pathData="M24,18 h60 a14,14 0 0 1 14,14 v44 a14,14 0 0 1 -14,14 h-60 a14,14 0 0 1 -14,-14 v-44 a14,14 0 0 1 14,-14 z" />
+
+    <!-- 左上小方 -->
+    <path
+        android:fillColor="#FF2A3444"
+        android:pathData="M32,26 h18 a5,5 0 0 1 5,5 v18 a5,5 0 0 1 -5,5 h-18 a5,5 0 0 1 -5,-5 v-18 a5,5 0 0 1 5,-5 z" />
+
+    <!-- 右上小方 -->
+    <path
+        android:fillColor="#FF2A3444"
+        android:pathData="M58,26 h18 a5,5 0 0 1 5,5 v18 a5,5 0 0 1 -5,5 h-18 a5,5 0 0 1 -5,-5 v-18 a5,5 0 0 1 5,-5 z" />
+
+    <!-- 左下强调方 -->
+    <path
+        android:fillColor="#FF4FD1C5"
+        android:pathData="M32,52 h18 a5,5 0 0 1 5,5 v18 a5,5 0 0 1 -5,5 h-18 a5,5 0 0 1 -5,-5 v-18 a5,5 0 0 1 5,-5 z" />
+
+    <!-- 右下小方 -->
+    <path
+        android:fillColor="#FF2A3444"
+        android:pathData="M58,52 h18 a5,5 0 0 1 5,5 v18 a5,5 0 0 1 -5,5 h-18 a5,5 0 0 1 -5,-5 v-18 a5,5 0 0 1 5,-5 z" />
+
+    <!-- 中心下载箭头：竖杆 + 箭头三角（盖在四格之上） -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M51,30 h6 v28 h-6 z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M40,54 L54,72 L68,54 z" />
+
+    <!-- 底栏托盘条，呼应积木桌面底栏 -->
+    <path
+        android:fillColor="#FF2A3444"
+        android:pathData="M33,79 h42 a2,2 0 0 1 2,2 v7.5 a2,2 0 0 1 -2,2 h-42 a2,2 0 0 1 -2,-2 v-7.5 a2,2 0 0 1 2,-2 z" />
+</vector>

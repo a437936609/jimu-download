@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/bg_elevated"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="88dp"
+            android:text="@string/back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/qr_apk_title"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- 左侧：二维码 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_qr"
+                android:layout_width="360dp"
+                android:layout_height="360dp"
+                android:background="@color/text_primary"
+                android:contentDescription="@string/qr_apk_title"
+                android:padding="12dp"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <!-- 右侧：说明与状态 -->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/qr_apk_guide"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/text_ssid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:paddingTop="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/accent"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/text_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:text="@string/qr_apk_status_idle"
+                    android:textColor="@color/status_info"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/log_bg"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:padding="12dp"
+        android:textColor="@color/text_muted"
+        android:textSize="12sp" />
+</LinearLayout>

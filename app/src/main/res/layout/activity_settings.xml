@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/bg_elevated"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="24dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/Widget.Uestcit.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="88dp"
+            android:text="@string/back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/settings_title"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="24dp"
+        android:paddingTop="12dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_section_update"
+                android:textColor="@color/accent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- 完整免责：免费、禁售遇售退款、责任声明、Q 群 -->
+            <TextView
+                android:id="@+id/text_disclaimer_full"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="8dp"
+                android:text="@string/disclaimer_full"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/text_local_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_update_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text="@string/update_idle"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <Button
+                    android:id="@+id/btn_check_update"
+                    style="@style/Widget.Uestcit.Button.Ghost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/check_update" />
+
+                <Button
+                    android:id="@+id/btn_download_update"
+                    style="@style/Widget.Uestcit.Button.Accent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="12dp"
+                    android:enabled="false"
+                    android:text="@string/download_install" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/divider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_section_security"
+                android:textColor="@color/accent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- 替代 Settings.apk 应用信息：列表 / 强停 / 停用 / 清数据 -->
+            <LinearLayout
+                android:id="@+id/row_app_manage"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_app_manage_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_app_manage_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <!-- 运行中应用 PSS / CPU + 整机可用内存 -->
+            <LinearLayout
+                android:id="@+id/row_mem_stats"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_mem_stats_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_mem_stats_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_unknown_sources"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_unknown_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_unknown_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <!-- 热点局域网：车机出码，手机扫码上传 APK -->
+            <LinearLayout
+                android:id="@+id/row_qr_apk_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_qr_apk_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_qr_apk_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <!-- U 盘目录点选安装 APK -->
+            <LinearLayout
+                android:id="@+id/row_usb_apk_install"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_usb_apk_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_usb_apk_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/divider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_section_factory"
+                android:textColor="@color/accent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- 一键进 XCDiagnostic；其内菜单可再开 DebugTools -->
+            <LinearLayout
+                android:id="@+id/row_open_diagnostic"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_diagnostic_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_diagnostic_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <!-- 系统 UID + REBOOT：确认后 PowerManager.reboot -->
+            <LinearLayout
+                android:id="@+id/row_reboot_ihu"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_reboot_entry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="@string/settings_reboot_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/text_muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/text_settings_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/log_bg"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="12dp"
+        android:textColor="@color/text_muted"
+        android:textSize="12sp" />
+</LinearLayout>

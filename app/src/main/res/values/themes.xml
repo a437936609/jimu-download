@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.UestcitDownload" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- 车机大触控主按钮 -->
+    <style name="Widget.Uestcit.Button.Accent" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_btn_accent</item>
+        <item name="android:textColor">@color/bg</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Widget.Uestcit.Button.Ghost" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_btn_ghost</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+</resources>

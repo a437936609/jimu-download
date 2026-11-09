@@ -1,0 +1,20 @@
+# Android / Gradle 本机与构建产物
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+
+# 本地构建副本与密钥材料（勿公开）
+out/
+signing/**/*.jks
+signing/**/*.keystore
+signing/**/*.p12
+signing/**/*.pk8
+signing/**/*.pem
+signing/**/*.x509.pem
+
+# PackageInstaller 转发壳临时反编译产物
+_pi_fwd/
+_pi_fwd_r/

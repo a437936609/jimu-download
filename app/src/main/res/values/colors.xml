@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 车机中控：深石墨 + 强调绿，大触控对比 -->
+    <color name="bg">#1C2229</color>
+    <color name="bg_elevated">#242B33</color>
+    <color name="panel">#2A323C</color>
+    <color name="panel_stroke">#3A4552</color>
+    <color name="accent">#2BB673</color>
+    <color name="accent_pressed">#239A61</color>
+    <color name="text_primary">#F2F5F8</color>
+    <color name="text_secondary">#9AA5B1</color>
+    <color name="text_muted">#6B7682</color>
+    <color name="divider">#3A4552</color>
+    <color name="status_ok">#2BB673</color>
+    <color name="status_warn">#E6A23C</color>
+    <color name="status_info">#5B9BD5</color>
+    <color name="log_bg">#151A20</color>
+    <!-- 启动图标自适应背景，对齐积木桌面深色底 -->
+    <color name="ic_launcher_bg">#FF0E141C</color>
+</resources>
